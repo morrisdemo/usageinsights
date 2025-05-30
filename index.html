@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Engagement Insights</title>
   <link rel="stylesheet" href="https://ui5.sap.com/resources/sap/fiori/themes/sap_horizon/library.css" />
   <style>
@@ -12,7 +12,6 @@
       padding: 1rem;
       margin: 0;
     }
-
     .card {
       background-color: #ffffff;
       border-radius: 0.5rem;
@@ -21,26 +20,17 @@
       padding: 1rem;
       margin-bottom: 1.5rem;
     }
-
     .card h3 {
       font-size: 1rem;
       color: #32363a;
       margin-bottom: 0.5rem;
     }
-
     .chart-container {
       width: 100%;
       height: auto;
       position: relative;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1 / 1;
     }
-
-    @media (max-width: 600px) {
-      .chart-container {
-        aspect-ratio: 1 / 1;
-      }
-    }
-
     canvas {
       width: 100% !important;
       height: 100% !important;
@@ -57,7 +47,7 @@
   </div>
 
   <div class="card">
-    <h3>Customer Program Participation</h3>
+    <h3>Customer Program Participation (Yes / No)</h3>
     <div class="chart-container">
       <canvas id="programChart"></canvas>
     </div>
@@ -70,11 +60,19 @@
     </div>
   </div>
 
+  <div class="card">
+    <h3>Appliance Usage Heat Map</h3>
+    <div class="chart-container">
+      <canvas id="usageChart"></canvas>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx1 = document.getElementById('happinessChart').getContext('2d');
     const ctx2 = document.getElementById('programChart').getContext('2d');
     const ctx3 = document.getElementById('interactionChart').getContext('2d');
+    const ctx4 = document.getElementById('usageChart').getContext('2d');
 
     new Chart(ctx1, {
       type: 'bar',
@@ -93,27 +91,30 @@
           legend: { display: false }
         },
         scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { stepSize: 1 }
-          }
+          y: { beginAtZero: true }
         }
       }
     });
 
     new Chart(ctx2, {
-      type: 'doughnut',
+      type: 'bar',
       data: {
         labels: ['AutoPay', 'Budget Billing', 'LIHEAP', 'eBill'],
         datasets: [{
-          label: 'Participation',
-          data: [25, 40, 15, 20],
-          backgroundColor: ['#3278be', '#75980b', '#8b47d7', '#df1278']
+          label: 'Yes = 1 / No = 0',
+          data: [1, 0, 1, 1],
+          backgroundColor: '#3278be'
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true, max: 1 }
+        }
       }
     });
 
@@ -130,6 +131,25 @@
       options: {
         responsive: true,
         maintainAspectRatio: false
+      }
+    });
+
+    new Chart(ctx4, {
+      type: 'bar',
+      data: {
+        labels: ['Fridge', 'Washer', 'Dryer', 'Oven', 'AC', 'Heater'],
+        datasets: [{
+          label: '% Usage',
+          data: [25, 15, 20, 10, 18, 12],
+          backgroundColor: '#8b47d7'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, max: 100 }
+        }
       }
     });
   </script>
