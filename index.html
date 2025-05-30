@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Engagement Insights</title>
   <link rel="stylesheet" href="https://ui5.sap.com/resources/sap/fiori/themes/sap_horizon/library.css" />
   <style>
     body {
       font-family: "72", Arial, sans-serif;
       background-color: #f7f7f7;
-      padding: 2rem;
+      padding: 1rem;
+      margin: 0;
     }
+
     .card {
       background-color: #ffffff;
       border-radius: 0.5rem;
-      box-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       border: 1px solid #e0e0e0;
       padding: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
+
     .card h3 {
       font-size: 1rem;
       color: #32363a;
       margin-bottom: 0.5rem;
     }
+
     .chart-container {
       width: 100%;
-      height: 300px;
+      height: auto;
+      position: relative;
+      aspect-ratio: 16 / 9;
     }
+
+    @media (max-width: 600px) {
+      .chart-container {
+        aspect-ratio: 1 / 1;
+      }
+    }
+
     canvas {
       width: 100% !important;
-      height: auto !important;
+      height: 100% !important;
     }
   </style>
 </head>
@@ -75,8 +88,15 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
         scales: {
-          y: { beginAtZero: true }
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
         }
       }
     });
@@ -90,6 +110,10 @@
           data: [25, 40, 15, 20],
           backgroundColor: ['#3278be', '#75980b', '#8b47d7', '#df1278']
         }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
 
@@ -102,6 +126,10 @@
           data: [35, 25, 20, 20],
           backgroundColor: ['#0a6ed1', '#e9730c', '#107e3e', '#bb0000']
         }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
   </script>
