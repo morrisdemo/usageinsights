@@ -206,7 +206,7 @@
           {
             label: 'Washer (ccf)',
             data: [15, 17, 16, 14, 19],
-            backgroundColor: '#e9730c'
+            backgroundColor: '#da6c6c'
           },
           {
             label: 'Dryer (ccf)',
@@ -230,24 +230,18 @@
           }
         ]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Monthly Appliance Usage (%)'
-          }
-        },
-        scales: {
-          x: {
-            stacked: true
-          },
-          y: {
-            beginAtZero: true,
-            stacked: true
-          }
-        }
+options: {
+  scales: {
+    y: {
+      stacked: true,
+      beginAtZero: true,
+      max: 100,
+      ticks: { callback: (value) => value + '%' }
+    },
+    x: { stacked: true }
+  }
+}
+
       }
     });
 
