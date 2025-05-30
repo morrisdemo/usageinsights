@@ -95,7 +95,7 @@
 <body>
 
     <div class="card">
-    <h3>Appliance Usage Heat Map</h3>
+    <h3>Appliance Usage</h3>
     <div class="chart-container">
       <canvas id="usageChart"></canvas>
     </div>
@@ -184,7 +184,7 @@
         datasets: [{
           label: 'Interactions',
           data: [35, 25, 20, 20],
-          backgroundColor: ['#059F9A', '#CC00DC', '#0070F2', '#798C78']
+          backgroundColor: ['#0a6ed1', '#e9730c', '#107e3e', '#bb0000']
         }]
       },
       options: {
@@ -194,27 +194,25 @@
     });
 
     new Chart(ctx4, {
-      type: 'heat',
+      type: 'doughnut',
       data: {
         labels: ['Fridge', 'Washer', 'Dryer', 'Oven', 'AC', 'Heater'],
         datasets: [{
           label: '% Usage',
           data: [25, 15, 20, 10, 18, 12],
-          backgroundColor: ['#798C78', '#0070F2', '#CC00DC', '#059F9A']
+          backgroundColor: ['#8b47d7', '#256F3A', '#0a6ed1', '#e9730c', '#107e3e', '#bb0000']
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: { beginAtZero: true, max: 100 }
-        }
+        maintainAspectRatio: false
       }
     });
   </script>
 
 </body>
 </html>
+
 
 
 
