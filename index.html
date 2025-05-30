@@ -194,20 +194,48 @@
     });
 
     new Chart(ctx4, {
-      type: 'doughnut',
-      data: {
-        labels: ['Fridge', 'Washer', 'Dryer', 'Oven', 'AC', 'Heater'],
-        datasets: [{
-          label: '% Usage',
-          data: [25, 15, 20, 10, 18, 12],
-          backgroundColor: ['#059f9a', '#0070f2', '#cc00dc', '#e9730c', '#059f9a', '#DA6C6C']
-        }]
+  type: 'bar',
+  data: {
+    labels: ['Fridge', 'Washer', 'Dryer', 'Oven', 'AC', 'Heater'],
+    datasets: [
+      {
+        label: 'Mar',
+        data: [20, 10, 15, 5, 12, 8],
+        backgroundColor: '#0070f2'
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
+      {
+        label: 'Apr',
+        data: [22, 12, 18, 6, 13, 9],
+        backgroundColor: '#e9730c'
+      },
+      {
+        label: 'May',
+        data: [24, 13, 19, 7, 14, 10],
+        backgroundColor: '#059f9a'
       }
-    });
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Monthly Appliance Usage (%)'
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        stacked: true
+      },
+      x: {
+        stacked: true
+      }
+    }
+  }
+});
+
   </script>
 
 </body>
