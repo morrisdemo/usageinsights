@@ -64,7 +64,7 @@
     }
     .slider {
       position: absolute;
-      cursor: pointer;
+      cursor: not-allowed;
       top: 0;
       left: 0;
       right: 0;
@@ -114,28 +114,28 @@
       <div class="toggle-item">
         <span>AutoPay</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" disabled>
           <span class="slider"></span>
         </label>
       </div>
       <div class="toggle-item">
         <span>Budget Billing</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" disabled>
           <span class="slider"></span>
         </label>
       </div>
       <div class="toggle-item">
         <span>LIHEAP</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" disabled>
           <span class="slider"></span>
         </label>
       </div>
       <div class="toggle-item">
         <span>eBill</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" checked disabled>
           <span class="slider"></span>
         </label>
       </div>
@@ -184,7 +184,7 @@
         datasets: [{
           label: 'Interactions',
           data: [35, 25, 20, 20],
-          backgroundColor: ['#0a6ed1', '#e9730c', '#107e3e', '#bb0000']
+          backgroundColor: ['#059F9A', '#CC00DC', '#0070F2', '#798C78']
         }]
       },
       options: {
@@ -200,7 +200,7 @@
         datasets: [{
           label: '% Usage',
           data: [25, 15, 20, 10, 18, 12],
-          backgroundColor: '#8b47d7'
+          backgroundColor: ['#798C78', '#0070F2', '#CC00DC', '#059F9A']
         }]
       },
       options: {
@@ -215,6 +215,7 @@
 
 </body>
 </html>
+
 
 
 
